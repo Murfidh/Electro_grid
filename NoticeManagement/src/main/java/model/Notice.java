@@ -25,7 +25,7 @@ private Connection connect(){
 	 	return con;
 	 }
 	
-
+//Method to insert notices to the system
 public String insertNotice(String title, String description, String branch){
 	
 	 String output = "";
