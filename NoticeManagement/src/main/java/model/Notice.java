@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class Notice {
 
-	//A common method to connect to the DB
+//A common method to connect to the DB
 private Connection connect(){
 	
 	 Connection con = null;
@@ -51,7 +51,7 @@ public String insertNotice(String title, String description, String branch){
 		 // execute the statement
 		 preparedStmt.execute();
 		 con.close();
-		 
+		  
 		 output = "Inserted successfully";
 	 }
 	 	catch (Exception e){	
@@ -63,6 +63,7 @@ public String insertNotice(String title, String description, String branch){
 }
 	
 
+//---------------method to view all the notices------------------------
 public String readNotice(){
 	
 	 String output = "";
@@ -113,6 +114,7 @@ public String readNotice(){
 	 	return output;
 }
 	
+//-------------------------method to update notice informations by id---------------------
 public String updateNotice(String ID, String title, String description, String branch){
 	
 		 String output = "";
@@ -146,6 +148,7 @@ public String updateNotice(String ID, String title, String description, String b
 }
 		
 
+//--------------------method to delete by id ----------------------------------
 public String deleteNotice(String ID){
 	
 		 String output = "";
