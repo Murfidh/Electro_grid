@@ -16,11 +16,12 @@ import org.jsoup.nodes.Document;
 @Path("/Notice")
 public class NoticeServices {
 	
+	//notice object 
 	Notice noticeObj = new Notice(); 
 	
 	@GET
 	@Path("/")
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.TEXT_HTML)   //output as html 
 	public String readNotices(){
 	 return noticeObj.readNotice();
 	 
@@ -28,8 +29,8 @@ public class NoticeServices {
 		
 	@POST
 	@Path("/")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)   //@Consumes specify the input type; here as form data
+	@Produces(MediaType.TEXT_PLAIN)					   //@Produces status message; here output as plain text	
 	public String insertNotice(@FormParam("Title") String Title,
 			@FormParam("Description") String Description,
 			@FormParam("Branch") String Branch)
@@ -38,7 +39,8 @@ public class NoticeServices {
 		return output;
   }
 
-	
+
+//---------------used json to update operation-----------------	
 	@PUT
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -59,7 +61,7 @@ public class NoticeServices {
   }
 
 	
-	
+//----------------used xml to delete operation--------------------	
 	@DELETE
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_XML)
