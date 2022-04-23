@@ -26,7 +26,7 @@ private Connection connect(){
 	 }
 	
 //Method to insert notices to the system
-public String insertNotice(String title, String description, String branch){
+public String insertNotice(String title, String description, String branch, String issuingOfficer){
 	
 	 String output = "";
 	 
@@ -39,7 +39,7 @@ public String insertNotice(String title, String description, String branch){
 			}
 	 
 		 // create a prepared statement
-		 String query = "insert into notices(`ID`,`Title`,`Description`,`Branch`)" + " values ( ?, ?, ?, ?)";
+		 String query = "insert into notices(`ID`,`Title`,`Description`,`Branch`,`issuingOfficer`)" + " values (?, ?, ?, ?, ?)";
 		 PreparedStatement preparedStmt = con.prepareStatement(query);
 		 
 		 // binding values
@@ -47,7 +47,7 @@ public String insertNotice(String title, String description, String branch){
 		 preparedStmt.setString(2, title);
 		 preparedStmt.setString(3, description);
 		 preparedStmt.setString(4, branch);
-		 
+		 preparedStmt.setString(4, issuingOfficer);
 		 // execute the statement
 		 preparedStmt.execute();
 		 con.close();
@@ -76,6 +76,7 @@ public String readNotice(){
 		 // Prepare the html table to be displayed
 		 output = "<table border='1'><tr><th>Title</th><th>Description</th>" +
 				 "<th>Branch</th>" +
+				 "<th>Issuing Officer</th>" +
 				 "<th>Update</th><th>Remove</th></tr>";
 
 		 String query = "select * from notices";
@@ -88,11 +89,13 @@ public String readNotice(){
 			 String title = rs.getString("Title");
 			 String description = rs.getString("Description");
 			 String branch = rs.getString("Branch");
-	
+			 String issuingOfficer = rs.getString("issuingOfficer");
+			 	
 			 // Add into the html table
 			 output += "<tr><td>" + title + "</td>";
 			 output += "<td>" + description + "</td>";
 			 output += "<td>" + branch + "</td>";
+			 output += "<td>" + issuingOfficer + "</td>";
 			 
 			 // buttons
 			 output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>"
@@ -115,7 +118,7 @@ public String readNotice(){
 }
 	
 //-------------------------method to update notice informations by id---------------------
-public String updateNotice(String ID, String title, String description, String branch){
+public String updateNotice(String ID, String title, String description, String branch, String issuingOfficer){
 	
 		 String output = "";
 		
@@ -125,14 +128,15 @@ public String updateNotice(String ID, String title, String description, String b
 				  return "Error while connecting to the database for updating."; }
 		
 			  // create a prepared statement
-			  String query = "UPDATE notices SET Title=?,Description=?,Branch=? WHERE ID=?";
+			  String query = "UPDATE notices SET Title=?,Description=?,Branch=?,issuingOfficer=? WHERE ID=?";
 		 	  PreparedStatement preparedStmt = con.prepareStatement(query);
 		 
 		 	  // binding values
 		 	  preparedStmt.setString(1, title);
 		 	  preparedStmt.setString(2, description);
 		 	  preparedStmt.setString(3, branch);
-		 	  preparedStmt.setInt(4, Integer.parseInt(ID));
+		 	  preparedStmt.setString(4, issuingOfficer);
+		 	  preparedStmt.setInt(5, Integer.parseInt(ID));
 		 
 		 	  // execute the statement
 		 	  preparedStmt.execute();

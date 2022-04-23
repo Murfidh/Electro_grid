@@ -33,9 +33,10 @@ public class NoticeServices {
 	@Produces(MediaType.TEXT_PLAIN)					   //@Produces status message; here output as plain text	
 	public String insertNotice(@FormParam("Title") String Title,
 			@FormParam("Description") String Description,
-			@FormParam("Branch") String Branch)
+			@FormParam("Branch") String Branch,
+			@FormParam("issuingOfficer") String issuingOfficer)
 	{
-		String output = noticeObj.insertNotice(Title, Description, Branch);
+		String output = noticeObj.insertNotice(Title, Description, Branch,issuingOfficer);
 		return output;
   }
 
@@ -55,7 +56,8 @@ public class NoticeServices {
 		String Title = noticeObject.get("Title").getAsString();
 		String Description = noticeObject.get("Description").getAsString();
 		String Branch = noticeObject.get("Branch").getAsString();
-		String output = noticeObj.updateNotice(ID, Title, Description, Branch) ;
+		String issuingOfficer = noticeObject.get("issuingOfficer").getAsString();
+		String output = noticeObj.updateNotice(ID, Title, Description, Branch,issuingOfficer) ;
 	
 		return output;
   }
