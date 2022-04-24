@@ -47,7 +47,7 @@ public String insertNotice(String title, String description, String branch, Stri
 		 preparedStmt.setString(2, title);
 		 preparedStmt.setString(3, description);
 		 preparedStmt.setString(4, branch);
-		 preparedStmt.setString(4, issuingOfficer);
+		 preparedStmt.setString(5, issuingOfficer);
 		 // execute the statement
 		 preparedStmt.execute();
 		 con.close();
@@ -55,7 +55,7 @@ public String insertNotice(String title, String description, String branch, Stri
 		 output = "Inserted successfully";
 	 }
 	 	catch (Exception e){	
-	 			output = "Error while inserting the item.";
+	 			output = "Error while inserting.";
 	 			System.err.println(e.getMessage());
 	 		}
 	 	
@@ -144,7 +144,7 @@ public String updateNotice(String ID, String title, String description, String b
 		 	  output = "Updated successfully";
 		 }
 		 	catch (Exception e){
-		 			output = "Error while updating the item.";
+		 			output = "Error while updating.";
 		 			System.err.println(e.getMessage());
 		 	}
 		 	
@@ -175,7 +175,7 @@ public String deleteNotice(String ID){
 			  output = "Deleted successfully";
 		 }
 		 	catch (Exception e){
-		 			output = "Error while deleting the item.";
+		 			output = "Error while deleting.";
 		 			System.err.println(e.getMessage());
 		 	  }
 		 	

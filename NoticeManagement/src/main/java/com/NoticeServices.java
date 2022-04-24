@@ -13,7 +13,7 @@ import org.jsoup.*;
 import org.jsoup.parser.*;
 import org.jsoup.nodes.Document; 
 
-@Path("/Notice")
+@Path("/Notice") 			 //specify the URI through which a resource and an API can be accessed
 public class NoticeServices {
 	
 	//notice object 
@@ -26,6 +26,8 @@ public class NoticeServices {
 	 return noticeObj.readNotice();
 	 
   }
+
+//******************************************************************************************************//	
 		
 	@POST
 	@Path("/")
@@ -41,6 +43,7 @@ public class NoticeServices {
   }
 
 
+//*******************************************************************************************************//
 //---------------used json to update operation-----------------	
 	@PUT
 	@Path("/")
@@ -62,7 +65,8 @@ public class NoticeServices {
 		return output;
   }
 
-	
+
+//*********************************************************************************************************//
 //----------------used xml to delete operation--------------------	
 	@DELETE
 	@Path("/")
