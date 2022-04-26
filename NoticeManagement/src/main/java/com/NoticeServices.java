@@ -45,7 +45,7 @@ public class NoticeServices {
 
 
 //*******************************************************************************************************//
-//---------------used json to update operation-----------------	
+//----used json to update operation-----------------	
 	@PUT
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
