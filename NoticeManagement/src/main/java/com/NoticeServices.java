@@ -13,7 +13,8 @@ import org.jsoup.*;
 import org.jsoup.parser.*;
 import org.jsoup.nodes.Document; 
 
-@Path("/Notice") 			 //specify the URI through which a resource and an API can be accessed
+//specify the URI through which a resource and an API can be accessed
+@Path("/Notice") 			 
 public class NoticeServices {
 	
 	//notice object 
